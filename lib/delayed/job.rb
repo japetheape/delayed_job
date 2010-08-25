@@ -254,8 +254,8 @@ module Delayed
 
   protected
 
-    def before_save
-      self.run_at ||= self.class.db_time_now
+    before_save do |job|
+      job.run_at ||= job.class.db_time_now
     end
 
   end
